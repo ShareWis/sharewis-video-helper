@@ -1,0 +1,20 @@
+%video#sw-player.video-js.vjs-default-skin.vjs-16-9{controls: '', autoplay: '', controlsList: 'nodownload'}
+  %source{src: src, type: type}
+
+  :javascript
+    var options = {
+      playbackRates: [0.5, 0.75, 1, 1.25, 1.5, 2],
+      plugins: {
+          keepVolume: {},
+          keepRate: {}
+      }
+    };
+
+    var player = videojs('sw-player', options);
+
+    var playerElement = document.getElementById("sw-player");
+    if (playerElement.addEventListener) {
+      playerElement.addEventListener('contextmenu', function(e) { e.preventDefault(); }, false);
+    } else {
+      playerElement.attachEvent('oncontextmenu', function() { window.event.returnValue = false; });
+    }
